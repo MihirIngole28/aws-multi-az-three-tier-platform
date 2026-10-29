@@ -11,9 +11,9 @@ This directory contains the foundational infrastructure required to manage Terra
 
 ## How to Deploy
 Run these commands locally from your terminal before pushing the main infrastructure code to GitHub:
-\`\`\`bash
+```bash
 cd backend-bootstrap
 terraform init
 terraform apply
-\`\`\`
+```
 Take the `github_actions_role_arn` output and save it as an Action Secret in the GitHub repository.

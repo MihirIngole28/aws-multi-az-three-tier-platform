@@ -10,7 +10,7 @@ on:
         branches:   [ "main" ]
     workflow_dispatch:
         inputs:
-            destroy:
+            action:
                 description: 'Choose Terraform Action'
                 required: true
                 type: choice
