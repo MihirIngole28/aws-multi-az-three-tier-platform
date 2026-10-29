@@ -309,7 +309,7 @@ data "aws_ami" "amazon_linux_2023" {
 resource "aws_launch_template" "app" {
   name_prefix   = "app-launch-template-"
   image_id      = data.aws_ami.amazon_linux_2023.id
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
 
   vpc_security_group_ids = [aws_security_group.ec2.id]
 
@@ -413,7 +413,7 @@ resource "aws_db_instance" "main" {
 
   engine            = "postgres"
   engine_version    = "15"
-  instance_class    = "db.t2.micro"
+  instance_class    = "db.t3.micro"
   allocated_storage = 20
   storage_type      = "gp3"
 
