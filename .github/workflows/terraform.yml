@@ -3,15 +3,22 @@ name: Terraform Infrastructure Pipeline
 on:
     push:
         branches:   [ "main" ]
+        paths-ignore:
+            - '**.md'
+            - '**.png'
     pull_request:
         branches:   [ "main" ]
     workflow_dispatch:
         inputs:
             destroy:
-                description: "Run terraform destroy"
-                type: boolean
+                description: 'Choose Terraform Action'
                 required: true
-                default: false
+                type: choice
+                default: 'plan'
+                options:
+                    - plan
+                    - apply
+                    - destroy
 
 permissions:
     id-token:   write
@@ -22,7 +29,7 @@ env:
 
 jobs:
     terraform:
-        name:       Terraform Plan & Apply
+        name:       Terraform Execution
         runs-on:    ubuntu-latest
 
         steps:
