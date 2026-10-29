@@ -1,5 +1,7 @@
 # AWS 3-Tier Web Architecture with Terraform & GitHub Actions
 
+![AWS Architecture Diagram](./images/architecture-diagram.jpg)
+
 ## Overview
 This repository contains the Infrastructure as Code (IaC) to provision a production-grade, highly available, and secure three-tier web application environment on AWS. The infrastructure is entirely managed by Terraform and deployed via a GitHub Actions CI/CD pipeline using keyless OIDC authentication.
 
