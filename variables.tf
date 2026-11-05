@@ -1,5 +1,5 @@
 variable "public_subnets" {
-  description = "A map of public subnets with their CIDR blocks"
+  description = "Map of public subnets with their CIDR blocks"
   type = map(object({
     cidr_block        = string
     availability_zone = string
@@ -19,7 +19,7 @@ variable "public_subnets" {
 }
 
 variable "private_subnets" {
-  description = "A map of private subnets with their CIDR blocks"
+  description = "Map of private subnets with their CIDR blocks"
   type = map(object({
     cidr_block        = string
     availability_zone = string
@@ -49,13 +49,13 @@ variable "private_subnets" {
 }
 
 variable "var_region" {
-  description = "The AWS region to deply resources in"
+  description = "AWS region to deply resources in"
   type        = string
   default     = "us-east-1"
 }
 
 variable "vpc_cidr" {
-  description = "The CIDR block of the main VPC"
+  description = "CIDR block of the main VPC"
   type        = string
   default     = "10.0.0.0/16"
 }
