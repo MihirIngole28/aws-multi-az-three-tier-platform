@@ -44,7 +44,7 @@ This repository contains the Infrastructure as Code (IaC) to provision a product
 ├── main.tf                 # Root module routing outputs to inputs
 ├── variables.tf            # Global variables
 └── outputs.tf              # Global outputs (e.g., Application URL)
-
+```
 
 ## Design Trade-offs & Architecture Decisions
 To balance production-readiness with cost control for this demonstration environment, the following design decisions were made:
