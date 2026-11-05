@@ -6,6 +6,7 @@
 This repository contains the Infrastructure as Code (IaC) to provision a production-grade, highly available, and secure three-tier web application environment on AWS. The infrastructure is entirely managed by Terraform and deployed via a GitHub Actions CI/CD pipeline using keyless OIDC authentication.
 
 ## Architecture Highlights
+* **Modular IaC Design:** The Terraform codebase is abstracted into logical, reusable modules (`network`, `compute`, and `database`) to ensure separation of concerns, reduce the deployment blast radius, and mimic enterprise-grade infrastructure repositories.
 * **Network Isolation:** 3-tier Virtual Private Cloud (VPC) spanning two Availability Zones.
 * **Zero-Trust Security:** Chained Security Groups enforcing least-privilege access (ALB -> EC2 -> RDS).
 * **Automated Scalability:** Auto Scaling Group (ASG) behind an Application Load Balancer (ALB) with dynamic ELB health checks.
@@ -27,6 +28,23 @@ This repository contains the Infrastructure as Code (IaC) to provision a product
 * **Amazon RDS for PostgreSQL:** Primary database deployed in a secure DB Subnet Group.
 * **Multi-AZ Failover:** Synchronous standby replica provisioned in a secondary Availability Zone for automatic failover.
 * Completely isolated dark tier with ingress allowed *only* from the Application Tier security group.
+
+## Repository Structure
+
+```text
+.
+├── .github/workflows/
+│   └── terraform.yml       # CI/CD Pipeline configuration
+├── backend-bootstrap/
+│   └── main.tf             # Foundational S3 backend and OIDC configuration
+├── modules/
+│   ├── network/            # VPC, Subnets, Routing, Gateways, and Security Groups
+│   ├── compute/            # Application Load Balancer, Launch Template, and ASG
+│   └── database/           # Subnet Groups, Secrets Manager, and RDS Instance
+├── main.tf                 # Root module routing outputs to inputs
+├── variables.tf            # Global variables
+└── outputs.tf              # Global outputs (e.g., Application URL)
+
 
 ## Design Trade-offs & Architecture Decisions
 To balance production-readiness with cost control for this demonstration environment, the following design decisions were made:
