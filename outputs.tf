@@ -1,4 +1,4 @@
 output "application_url" {
   description = "The URL to access the application."
-  value       = "http://${aws_lb.main.dns_name}"
+  value       = "http://${module.compute.alb_dns_name}"
 }
